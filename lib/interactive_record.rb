@@ -58,7 +58,7 @@ class InteractiveRecord
     sql = "SELECT * FROM #{self.table_name} WHERE ? = ?"
     attribute.map do |key, value|
       binding.pry
-      DB[:conn].execute(sql, key.to_s,value)
+      DB[:conn].execute(sql, key.to_s, value)
     end
     
   end
