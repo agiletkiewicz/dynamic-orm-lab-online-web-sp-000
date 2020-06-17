@@ -58,7 +58,7 @@ class InteractiveRecord
     
     attribute.map do |key, value|
       formatted_value = value.class == Fixnum ? value : "'#{value}'"
-      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{formatted_value}")
+      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{formatted_value}"
       DB[:conn].execute(sql)
     end
     
