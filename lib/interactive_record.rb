@@ -57,8 +57,8 @@ class InteractiveRecord
   def self.find_by(attribute)
     sql = "SELECT * FROM #{self.table_name} WHERE ? = ?"
     attribute.map do |key, value|
-      binding.pry
-      DB[:conn].execute(sql, key.to_s, value)
+      formatted_value = value.class == Fixnum ? value : "'#{value}'"
+      DB[:conn].execute(sql, key.to_s, formatted_value)
     end
     
   end
